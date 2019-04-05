@@ -9,11 +9,31 @@ const loadUser = () => {
       document.getElementById('title').innerHTML += ` ${user}`
 
       const audios = Object.values(json).filter((audio) => {
-        if (audio.user && audio.media_audio)
-            return audio.user.username === user
+        return audio.user.username === user
       })
 
       audios.reverse().forEach(audio => {
+        renderAudio(audio)
+      })
+
+    })
+  })
+}
+
+const loadSingleAudio = () => {
+  fetch('https://fiveminutes-5655c.firebaseio.com/audios.json').then((response) => {
+    return response.json().then((json) => {
+      const slug = window.location.search.replace('?','')
+
+      const single = Object.values(json).filter((audio) => {
+        return audio.slug === slug
+      })
+
+      single.forEach(audio => {
+        document.getElementById('hero-container').innerHTML = `
+          <h1 class="title">${audio.title}</h1>
+          <h2 class="subtitle">por <a href="/por/?${audio.user.username}">@${audio.user.username}</a></h2>
+        `
         renderAudio(audio)
       })
 
@@ -41,6 +61,7 @@ const loadHome = () => {
 const renderAudio = media => {
   const { title, media_audio, user, slug, created_at } = media
   const audios = document.getElementById('audios')
+
   if (user)
     audios.innerHTML += `
       <div class="card">
@@ -54,7 +75,7 @@ const renderAudio = media => {
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4">${title || ''}</p>
+              <p class="title is-4"><a href="/?${slug || ''}">${title || ''}</a></p>
               <p class="subtitle is-6"><a href="/por/?${user.username || ''}">@${user.username || ''}</a></p>
             </div>
           </div>
