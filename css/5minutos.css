@@ -11,7 +11,15 @@ audio {
   width: 100%;
 }
 
+.card {
+  margin-top: 20px;
+}
+
 .card time {
   display: block;
   font-size: 10px;
+}
+
+.section {
+  padding: 0px;
 }
