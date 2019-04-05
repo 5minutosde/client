@@ -56,6 +56,8 @@ const loadHome = () => {
         renderAudio(audio)
       })
 
+      new ClipboardJS('.btn-copy')
+
     })
   })
 }
@@ -64,6 +66,11 @@ const renderAudio = media => {
   const { title, media_audio, user, slug, created_at } = media
   const audios = document.getElementById('audios')
 
+  let displaySlug
+  if (!slug) {
+    displaySlug = 'is-invisible'
+  }
+
   if (user)
     audios.innerHTML += `
       <div class="card">
@@ -71,14 +78,14 @@ const renderAudio = media => {
           <div class="media">
             <div class="media-left">
               <figure class="image is-48x48">
-                <a href="/por/?${user.username || ''}">
-                  <img src="${user.avatar || 'https://api.adorable.io/avatars/150/' + user.username}" alt="@${user.username || ''}">
+                <a href="/por/?${user.username}">
+                  <img src="${user.avatar || 'https://api.adorable.io/avatars/150/' + user.username}" alt="@${user.username}">
                 </a>
               </figure>
             </div>
             <div class="media-content">
               <p class="title is-4"><a href="/?${slug || ''}">${title || ''}</a></p>
-              <p class="subtitle is-6"><a href="/por/?${user.username || ''}">@${user.username || ''}</a></p>
+              <p class="subtitle is-6"><a href="/por/?${user.username}">@${user.username}</a></p>
             </div>
           </div>
           <div class="content">
@@ -86,10 +93,11 @@ const renderAudio = media => {
               <source src="${media_audio}" type="audio/ogg">
             </audio>
             <time datetime="${created_at}">${created_at}</time>
+            <button class="button is-small btn-copy ${displaySlug}" data-clipboard-text="http://5minutos.de/?${slug || ''}" title=""><img src="/imgs/iconfinder_icon-share_211886.png" height="18" width="18"></button>
           </div>
         </div>
       </div>
     `
 
-  return
+    return
 }
