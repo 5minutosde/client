@@ -23,3 +23,7 @@ audio {
 .section {
   padding: 0px;
 }
+
+a {
+  color: black
+}
