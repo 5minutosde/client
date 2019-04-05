@@ -1,24 +1,53 @@
 fetch('https://fiveminutes-5655c.firebaseio.com/audios.json').then((response) => {
+
   return response.json().then((json) => {
-    let user = window.location.pathname.replace(/\//g,'')
+    const user = window.location.search.replace('?','')
+
+    document.title += ` ${user}`
+    document.getElementById('navbar').innerHTML += `<a href="" class="navbar-item navbar-user">${user}</a>`
+    document.getElementById('title').innerHTML += ` ${user}`
+
     const audios = Object.values(json).filter((audio) => {
-      return audio.user === parseInt(user, 10)
+      if (audio.user && audio.media_audio)
+          return audio.user.username === user
     })
+
     audios.forEach(audio => {
-      renderAudios(audio)
+      renderAudio(audio)
     })
+
   })
 })
 
-const renderAudios = media => {
-  const { title, audio } = media
-  const home = document.getElementById('home')
-  home.innerHTML += `
-  <div class="card">
-    <h2> ${title} </h2>
-    <audio controls>
-      <source src="${audio}" type="audio/ogg">
-    </audio>
-  </div>
+const renderAudio = media => {
+  const { title, media_audio, user, slug, created_at } = media
+  const audios = document.getElementById('audios')
+
+  audios.innerHTML += `
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <a href="/por/?${user.username}">
+                <img src="${user.avatar || 'https://api.adorable.io/avatars/150/' + user.username}" alt="@${user.avatar || ''}">
+              </a>
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4">${title || ''}</p>
+            <p class="subtitle is-6">@${user.username}</p>
+          </div>
+        </div>
+        <div class="content">
+          <audio controls>
+            <source src="${media_audio}" type="audio/ogg">
+          </audio>
+          <time datetime="${created_at}">${created_at}</time>
+        </div>
+      </div>
+    </div>
   `
+
+  return
 }

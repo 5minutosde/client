@@ -1,0 +1,17 @@
+.navbar-user {
+  padding-left: 0px;
+  font-weight: bold;
+}
+
+.navbar-item {
+  padding-right: 4px;
+}
+
+audio {
+  width: 100%;
+}
+
+.card time {
+  display: block;
+  font-size: 10px;
+}
