@@ -9,7 +9,8 @@ const loadUser = () => {
       document.getElementById('title').innerHTML += ` ${user}`
 
       const audios = Object.values(json).filter((audio) => {
-        return audio.user.username === user
+        if (audio.media_audio)
+          return audio.user.username === user
       })
 
       audios.reverse().forEach(audio => {
@@ -26,7 +27,8 @@ const loadSingleAudio = () => {
       const slug = window.location.search.replace('?','')
 
       const single = Object.values(json).filter((audio) => {
-        return audio.slug === slug
+        if (audio.media_audio)
+          return audio.slug === slug
       })
 
       single.forEach(audio => {
@@ -46,7 +48,7 @@ const loadHome = () => {
 
     return response.json().then((json) => {
       const audios = Object.values(json).filter((audio) => {
-        if (audio.user && audio.media_audio)
+        if (audio.media_audio)
             return audio.user.username
       })
 
