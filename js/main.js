@@ -5,8 +5,8 @@ const loadUser = () => {
       const user = window.location.search.replace('?','')
 
       document.title += ` ${user}`
-      document.getElementById('navbar').innerHTML += `<a href="" class="navbar-item navbar-user">${user}</a>`
-      document.getElementById('title').innerHTML += ` ${user}`
+      document.getElementById('navbar').innerHTML += `<a href="/por/?${user}" class="navbar-item navbar-user">${user}</a>`
+      document.getElementById('title').innerHTML += `<a href="/por/?${user}">${user}</a>`
 
       const audios = Object.values(json).filter((audio) => {
         if (audio.media_audio)
