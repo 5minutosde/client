@@ -49,14 +49,12 @@ const loadHome = () => {
     return response.json().then((json) => {
       const audios = Object.values(json).filter((audio) => {
         if (audio.media_audio)
-            return audio.user.username
+          return audio.user.username
       })
 
       audios.reverse().forEach(audio => {
         renderAudio(audio)
       })
-
-      new ClipboardJS('.btn-copy')
 
     })
   })
@@ -93,11 +91,23 @@ const renderAudio = media => {
               <source src="${media_audio}" type="audio/ogg">
             </audio>
             <time datetime="${created_at}">${created_at}</time>
-            <button class="button is-small btn-copy ${displaySlug}" data-clipboard-text="http://5minutos.de/?${slug || ''}" title=""><img src="/imgs/iconfinder_icon-share_211886.png" height="18" width="18"></button>
+            <button class="button is-small btn-copy ${displaySlug}" onclick="displayNotification()" data-clipboard-text="http://5minutos.de/?${slug || ''}" title=""><img src="/imgs/iconfinder_icon-share_211886.png" height="18" width="18"></button>
           </div>
         </div>
       </div>
     `
 
     return
+}
+
+const displayNotification = () => {
+  const { classList } = document.getElementById('notification')
+  classList.add('animated', 'fadeInUp')
+  classList.remove('fadeOutDown')
+
+  setTimeout(
+    function () {
+      classList.add('animated', 'fadeOutDown')
+      classList.remove('fadeInUp')
+    }, 2000)
 }
