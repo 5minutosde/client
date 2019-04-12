@@ -37,11 +37,12 @@ a {
 }
 
 .notification {
-  display: none;
+  opacity: 0;
   position: fixed;
   bottom: 1.5rem;
   margin: 0px 1.5rem;
   left: 0px;
+  right: 0px;
   text-align: center;
   padding: 10px;
   background: #4a4a4a;

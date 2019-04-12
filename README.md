@@ -1,5 +1,7 @@
 # 5 minutos de
 
+Repositório para o client da aplicação do site 5 minutos.
+
 ## Desenvolvimento
 
 ```
