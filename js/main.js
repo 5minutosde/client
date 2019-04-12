@@ -1,3 +1,21 @@
+const loadAbout = () => {
+  fetch('https://fiveminutes-5655c.firebaseio.com/audios.json').then((response) => {
+
+    return response.json().then((json) => {
+
+      const audios = Object.values(json).filter((audio) => {
+        if (audio.slug === 'o-que-e-o-5-minutos-por-linocente' || audio.slug === 'welcome-por-little-war')
+          return audio
+      })
+
+      audios.reverse().forEach(audio => {
+        renderAudio(audio)
+      })
+
+    })
+  })
+}
+
 const loadUser = () => {
   fetch('https://fiveminutes-5655c.firebaseio.com/audios.json').then((response) => {
 
@@ -5,7 +23,7 @@ const loadUser = () => {
       const user = window.location.search.replace('?','')
 
       document.title += ` ${user}`
-      document.getElementById('navbar').innerHTML += `<a href="/por/?${user}" class="navbar-item navbar-user">${user}</a>`
+      document.getElementById('navbar-logo').innerHTML += `<a href="/por/?${user}" class="navbar-item navbar-user">${user}</a>`
       document.getElementById('title').innerHTML += `<a href="/por/?${user}">${user}</a>`
 
       const audios = Object.values(json).filter((audio) => {
