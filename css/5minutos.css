@@ -76,3 +76,7 @@ a {
 .media-content {
   padding-right: 33px;
 }
+
+#mentions {
+  display: none;
+}

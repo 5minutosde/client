@@ -31,9 +31,22 @@ const loadUser = () => {
           return audio.user.username === user
       })
 
+      const mentions = Object.values(json).filter((audio) => {
+        if (audio.media_audio)
+          if (audio.title)
+            return audio.title.includes(user)
+      })
+
       audios.reverse().forEach(audio => {
         renderAudio(audio)
       })
+
+      mentions.reverse().forEach(audio => {
+        renderAudio(audio, 'mentions')
+      })
+
+      document.getElementById('count-audios').innerHTML = Object.keys(audios).length
+      document.getElementById('count-mentions').innerHTML = Object.keys(mentions).length
 
     })
   })
@@ -78,9 +91,9 @@ const loadHome = () => {
   })
 }
 
-const renderAudio = media => {
+const renderAudio = (media, elem) => {
   const { title, media_audio, user, slug, created_at } = media
-  const audios = document.getElementById('audios')
+  const list = document.getElementById( elem || 'audios' )
 
   let displaySlug
   if (!slug) {
@@ -88,7 +101,7 @@ const renderAudio = media => {
   }
 
   if (user)
-    audios.innerHTML += `
+  list.innerHTML += `
       <div class="card">
         <div class="card-content">
           <div class="media">
@@ -114,7 +127,6 @@ const renderAudio = media => {
         </div>
       </div>
     `
-
     return
 }
 
@@ -128,4 +140,18 @@ const displayNotification = () => {
       classList.add('animated', 'fadeOutDown')
       classList.remove('fadeInUp')
     }, 2000)
+}
+
+const showMentions = (elem) => {
+  document.getElementById('audios').style.display = 'none'
+  document.getElementById('mentions').style.display = 'block'
+  document.getElementsByClassName('is-active')[0].classList.remove('is-active')
+  elem.classList.add("is-active")
+}
+
+const showAudios = (elem) => {
+  document.getElementById('audios').style.display = 'block'
+  document.getElementById('mentions').style.display = 'none'
+  document.getElementsByClassName('is-active')[0].classList.remove('is-active')
+  elem.classList.add("is-active")
 }
