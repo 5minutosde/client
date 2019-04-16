@@ -4,8 +4,20 @@
   font-weight: bold;
 }
 
+.navbar {
+  width: 100%;
+}
+
+.navbar-end {
+  justify-content: flex-end;
+  margin-left: auto;
+  align-items: stretch;
+  display: flex;
+  align-items: center;
+}
+
 .navbar-item {
-  padding-right: 4px;
+  padding-right: 10px;
 }
 
 audio {
@@ -47,4 +59,12 @@ a {
   padding: 10px;
   background: #4a4a4a;
   color: white;
+}
+
+.navbar-brand {
+  float: left;
+}
+
+.navbar-end {
+  min-height: 3.25rem;
 }
