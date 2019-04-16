@@ -141,3 +141,17 @@ const displayNotification = () => {
       classList.remove('fadeInUp')
     }, 2000)
 }
+
+const showMentions = (elem) => {
+  document.getElementById('audios').style.display = 'none'
+  document.getElementById('mentions').style.display = 'block'
+  document.getElementsByClassName('is-active')[0].classList.remove('is-active')
+  elem.classList.add("is-active")
+}
+
+const showAudios = (elem) => {
+  document.getElementById('audios').style.display = 'block'
+  document.getElementById('mentions').style.display = 'none'
+  document.getElementsByClassName('is-active')[0].classList.remove('is-active')
+  elem.classList.add("is-active")
+}
