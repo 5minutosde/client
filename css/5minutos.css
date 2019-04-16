@@ -68,3 +68,7 @@ a {
 .navbar-end {
   min-height: 3.25rem;
 }
+
+.media-content {
+  padding-right: 33px;
+}
