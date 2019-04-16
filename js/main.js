@@ -118,7 +118,7 @@ const renderAudio = (media, elem) => {
             </div>
           </div>
           <div class="content">
-            <audio controls>
+            <audio preload="none" controls>
               <source src="${media_audio}" type="audio/ogg">
             </audio>
             <time datetime="${created_at}">${created_at}</time>
