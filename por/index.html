@@ -47,6 +47,13 @@
 
   <div class="section">
     <div class="container">
+      <div class="tabs is-centered">
+        <ul>
+          <li class="is-active" onclick="showAudios(this)"><a>Áudios (<span id="count-audios"></span>)</a></li>
+          <li onclick="showMentions(this)"><a>@ Menções (<span id="count-mentions"></span>)</a></li>
+        </ul>
+      </div>
+      <div id="mentions"></div>
       <div id="audios"></div>
     </div>
   </div>
