@@ -7,8 +7,8 @@ Repositório para o client da aplicação do site 5 minutos.
 Adicione no seu **rodapé** os arquivos:
 
 ```
-<link rel="stylesheet" href="http://5minutos.de/embed/style.css">
-<script src="http://5minutos.de/embed/script.js"></script>
+<link rel="stylesheet" href="https://5minutos.de/embed/style.css">
+<script src="https://5minutos.de/embed/script.js"></script>
 ```
 
 Onde você quiser embedar seu áudio, adicione o seguinte html:
