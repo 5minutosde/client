@@ -1,0 +1,55 @@
+.five-minutes audio {
+  width: 100%;
+  height: 55px;
+}
+
+.five-minutes card {
+  margin-top: 20px;
+}
+
+.five-minutes .card time {
+  display: block;
+  font-size: 10px;
+}
+
+.five-minutes section {
+  padding: 0px;
+}
+
+.five-minutes a {
+  color: black
+}
+
+.five-minutes .btn-copy {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0px 5px;
+}
+
+.five-minutes notification {
+  opacity: 0;
+  position: fixed;
+  bottom: 1.5rem;
+  margin: 0px 1.5rem;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  padding: 10px;
+  background: #4a4a4a;
+  color: white;
+}
+
+
+.five-minutes #mentions {
+  display: none;
+}
+
+.five-minutes p {
+  margin: 0px !important;
+  margin-bottom: 1em !important;
+}
+
+.five-minutes figure {
+  margin: 0;
+}
