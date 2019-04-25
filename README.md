@@ -2,6 +2,27 @@
 
 Repositório para o client da aplicação do site 5 minutos.
 
+## Como usar o embed
+
+Adicione no seu **rodapé** os arquivos:
+
+```
+<link rel="stylesheet" href="http://5minutos.de/embed/style.css">
+<script src="http://5minutos.de/embed/script.js"></script>
+```
+
+Onde você quiser embedar seu áudio, adicione o seguinte html:
+
+```
+<div id="embed-5-minutos" data-url=""></div>
+```
+
+Onde `data-url` é o link completo do áudio. Ex:
+
+```
+<div id="embed-5-minutos" data-url="http://5minutos.de/por/?little_war"></div>
+```
+
 ## Desenvolvimento
 
 ```
