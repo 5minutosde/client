@@ -1,0 +1,8 @@
+.Header {
+    border-bottom: 1px solid gray;
+    padding: 12px;
+}
+
+.button {
+    float: right;
+}
