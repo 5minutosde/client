@@ -7,13 +7,13 @@ const card = props => (
   <div className="Card">
     <div className="row">
       <div className="column avatar">
-        <Link to="/user">
+        <Link to={`/${props.media.user.username}`}>
           <img src={props.media.user.avatar || `https://api.adorable.io/avatars/400/abott@adorable.io.png`} alt="" height="48" />
         </Link>
       </div>
       <div className="column">
         <div>
-          <Link to={`/user/${props.media.user.slug}`}>{props.media.title}</Link>
+          <Link to={`/${props.media.user.username}/${props.media.slug}`}>{props.media.title}</Link>
         </div>
         <div>
           <Link to={`/${props.media.user.username}`}>{`@${props.media.user.username}`}</Link>

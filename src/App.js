@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/:user/:media" component={Media} />
+            <Route path="/:user/:mediaSlug" component={Media} />
             <Route path="/:user" component={User} />
         </Switch>
       </ BrowserRouter>
