@@ -1,18 +1,21 @@
-import React from "react";
-import logo from "./logo.svg";
+import React from "react"
+import Home from './containers/Home/Home'
+import Media from './containers/Media/Media'
+import User from './containers/User/User'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
 import "./App.css";
-import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
-import Card from "./components/Card/Card";
 
 function App() {
   return (
     <div>
-      <Header />
-      <Hero title="Título" subtitle="lol" />
-      <div class="container">
-        <Card />
-      </div>
+      <BrowserRouter>
+        <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/:user/:media" component={Media} />
+            <Route path="/:user" component={User} />
+        </Switch>
+      </ BrowserRouter>
     </div>
   );
 }
