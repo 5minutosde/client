@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import axios from 'axios'
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import Card from "../../components/Card/Card";
+
+import Database from '../../Database';
 
 class User extends Component {
 
@@ -10,35 +11,56 @@ class User extends Component {
     super(props)
     this.state = {
       medias: [],
-      user: 'Loading...'
+      user: {
+        username: 'Carregando...'
+      }
     }
   }
 
-  componentDidMount() {
-    const { user } = this.props.match.params
-    axios.get(`https://fiveminutes-5655c.firebaseio.com/audios.json`)
-    .then(res => {
-      const response = Object.keys(res.data).map((key, index) => {
-        return res.data[key]
-      })
-      const medias = response.reverse().filter((media) => {
-        return media.media_audio && media.user.username === user
-      })
-      this.setState({ medias, user })
-    })
-    .catch(err => {
-      console.error({ err })
+  findUser = async (user) => {
+    return Database.ref('users')
+    .orderByChild("username")
+    .equalTo(user)
+    .once('value')
+    .then(function(snapshot) {
+      const response = snapshot.val() || null;
+      const id = Object.keys(response)[0]
+      return response[id]
     })
   }
 
+  findMedias = async (user) => {
+    return Database.ref('audios')
+    .orderByChild("user/username")
+    .equalTo(user)
+    .once('value')
+    .then(function(snapshot) {
+      const response = snapshot.val() || null;
+      const json = Object.keys(response)
+      const medias = json.map(function(media) {
+        return response[media]
+      })
+      return medias
+    })
+  }
+
+  async componentDidMount() {
+    const username = this.props.match.params.user
+    const user = await this.findUser(username)
+    const medias = await this.findMedias(username)
+
+    this.setState({ user, medias })
+  }
+
   render() {
+    const { medias, user } = this.state
 
     return (
       <div>
-        <Header user={this.state.user} />
-        <Hero title={`@${this.state.user}`} subtitle="Áudios:" />
+        <Header user={user.username} />
+        <Hero title={`@${user.username}`} subtitle="Áudios:" />
         <div className="container">
-          { this.state.medias.map((media, key) =>
+          { medias.map((media, key) =>
             <Card media={media} key={key} />
           )}
         </div>
