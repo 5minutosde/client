@@ -15,24 +15,21 @@ class User extends Component {
     }
   }
 
-  findOneMedia = async (user, mediaSlug) => {
+  findOneMedia = async (mediaSlug) => {
     return Database.ref('audios')
-    .orderByChild("user/username")
-    .equalTo(user)
+    .orderByChild("slug")
+    .equalTo(mediaSlug)
     .once('value')
     .then(function(snapshot) {
       const response = snapshot.val() || null;
-      const json = Object.keys(response)
-      const mediaId = json.filter(function(media) {
-        return response[media].slug === mediaSlug
-      })
-      return [response[mediaId]]
+      const id = Object.keys(response)[0]
+      return [response[id]]
     })
   }
 
   async componentDidMount() {
     const { user, mediaSlug } = this.props.match.params
-    const medias = await this.findOneMedia(user, mediaSlug)
+    const medias = await this.findOneMedia(mediaSlug)
     this.setState({ medias, username: user, mediaTitle: medias[0].title })
   }
 
