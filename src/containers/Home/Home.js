@@ -4,8 +4,9 @@ import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import Card from "../../components/Card/Card";
 
-class Home extends Component {
+import Database from '../../Database';
 
+class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -13,21 +14,27 @@ class Home extends Component {
     }
   }
 
-  componentDidMount() {
-    axios.get(`https://fiveminutes-5655c.firebaseio.com/audios.json`)
-    .then(res => {
-      const response = Object.keys(res.data).map((key, index) => {
-        return res.data[key]
-      })
-      const medias = response.reverse().filter((media) => {
-        return media.media_audio
-      })
-      console.log(medias)
-      this.setState({ medias })
+  findBySlug = async (slug) => {
+    return Database.ref('audios')
+    .orderByChild("slug")
+    .equalTo(slug)
+    .once('value')
+    .then(function(snapshot) {
+      const response = snapshot.val() || null;
+      const id = Object.keys(response)[0]
+      return response[id]
     })
-    .catch(err => {
-      console.error({ err })
-    })
+  }
+
+  findHomeMedias = async (user, mediaSlug) => {
+    const howToUse = await this.findBySlug('o-que-e-o-5-minutos-por-linocente')
+    const welcome = await this.findBySlug('welcome-por-little-war')
+    return [ howToUse, welcome ]
+  }
+
+  async componentDidMount() {
+    const medias = await this.findHomeMedias()
+    this.setState({ medias })
   }
 
   render() {
@@ -35,7 +42,7 @@ class Home extends Component {
     return (
       <div>
         <Header />
-        <Hero title="5 minutos de" subtitle="Sejam bem vindos" />
+        <Hero title="Bem vindos aos 5 minutos" />
         <div className="container">
           { this.state.medias.map((media, key) =>
             <Card media={media} key={key} />
