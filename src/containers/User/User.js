@@ -1,12 +1,11 @@
-import React, { Component } from "react";
-import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
-import Card from "../../components/Card/Card";
+import React, { Component } from "react"
+import Header from "../../components/Header/Header"
+import Hero from "../../components/Hero/Hero"
+import Card from "../../components/Card/Card"
 
-import Database from '../../Database';
+import Database from '../../Database'
 
 class User extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -23,7 +22,7 @@ class User extends Component {
     .equalTo(user)
     .once('value')
     .then(function(snapshot) {
-      const response = snapshot.val() || null;
+      const response = snapshot.val() || null
       const id = Object.keys(response)[0]
       return response[id]
     })
@@ -35,7 +34,7 @@ class User extends Component {
     .equalTo(user)
     .once('value')
     .then(function(snapshot) {
-      const response = snapshot.val() || null;
+      const response = snapshot.val() || null
       const json = Object.keys(response)
       const medias = json.map(function(media) {
         return response[media]
@@ -69,4 +68,4 @@ class User extends Component {
   }
 }
 
-export default User;
+export default User

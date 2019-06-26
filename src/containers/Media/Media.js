@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
-import Card from "../../components/Card/Card";
+import React, { Component } from "react"
+import Header from "../../components/Header/Header"
+import Hero from "../../components/Hero/Hero"
+import Card from "../../components/Card/Card"
 
-import Database from '../../Database';
+import Database from '../../Database'
 
 class User extends Component {
   constructor(props) {
@@ -48,4 +48,4 @@ class User extends Component {
   }
 }
 
-export default User;
+export default User

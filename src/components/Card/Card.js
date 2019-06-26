@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 import { Link } from 'react-router-dom'
 
-import "./Card.css";
+import "./Card.css"
 
 const card = props => (
   <div className="Card">
@@ -29,6 +29,6 @@ const card = props => (
       <small>{props.media.created_at}</small>
     </div>
   </div>
-);
+)
 
-export default card;
+export default card

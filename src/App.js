@@ -4,7 +4,7 @@ import Media from './containers/Media/Media'
 import User from './containers/User/User'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import "./App.css";
+import "./App.css"
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         </Switch>
       </ BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

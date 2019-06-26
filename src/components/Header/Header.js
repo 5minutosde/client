@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 import { Link } from 'react-router-dom'
 
-import "./Header.css";
+import "./Header.css"
 
 const header = props => {
   const userLink = props.user ? <Link to={`/${props.user}`}>{props.user}</Link> : null
@@ -17,4 +17,4 @@ const header = props => {
   )
 }
 
-export default header;
+export default header

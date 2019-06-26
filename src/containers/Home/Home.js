@@ -1,10 +1,9 @@
-import React, { Component } from "react";
-import axios from 'axios'
-import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
-import Card from "../../components/Card/Card";
+import React, { Component } from "react"
+import Header from "../../components/Header/Header"
+import Hero from "../../components/Hero/Hero"
+import Card from "../../components/Card/Card"
 
-import Database from '../../Database';
+import Database from '../../Database'
 
 class Home extends Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class Home extends Component {
     .equalTo(slug)
     .once('value')
     .then(function(snapshot) {
-      const response = snapshot.val() || null;
+      const response = snapshot.val() || null
       const id = Object.keys(response)[0]
       return response[id]
     })
@@ -38,7 +37,6 @@ class Home extends Component {
   }
 
   render() {
-
     return (
       <div>
         <Header />
@@ -53,4 +51,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Home

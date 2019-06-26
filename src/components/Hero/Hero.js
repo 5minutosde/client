@@ -1,5 +1,5 @@
-import React from "react";
-import "./Hero.css";
+import React from "react"
+import "./Hero.css"
 
 const hero = ({ title, subtitle }) => (
   <section className="Hero">
@@ -8,6 +8,6 @@ const hero = ({ title, subtitle }) => (
       <h3>{subtitle}</h3>
     </div>
   </section>
-);
+)
 
-export default hero;
+export default hero
