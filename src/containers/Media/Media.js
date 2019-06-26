@@ -37,7 +37,7 @@ class User extends Component {
     return (
       <div>
         <Header user={this.state.username} />
-        <Hero title={`${this.state.mediaTitle}`} subtitle="Áudios:" />
+        <Hero title={`${this.state.mediaTitle}`} subtitle="Áudio:" />
         <div className="container">
           { this.state.medias.map((media, key) =>
             <Card media={media} key={key} />
