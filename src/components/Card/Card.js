@@ -22,7 +22,7 @@ const card = props => (
     </div>
     <div className="row">
       <audio preload="none" controls>
-        <source src={props.media.media_audio} type="audio/ogg" />
+        <source src={props.media.media_audio} preload="none" type="audio/ogg" />
       </audio>
     </div>
     <div className="row date">
