@@ -2,3 +2,13 @@
   max-width: 800px;
   margin: 0 auto;
 }
+
+.row {
+  display: flex;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+}

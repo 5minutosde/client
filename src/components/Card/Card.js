@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 
-import "./Card.css"
+import "./Card.scss"
 
 const card = props => (
   <div className="Card">
@@ -12,9 +12,9 @@ const card = props => (
         </Link>
       </div>
       <div className="column">
-        <div>
+        <h3 class="card-title">
           <Link to={`/${props.media.user.username}/${props.media.slug}`}>{props.media.title}</Link>
-        </div>
+        </h3>
         <div>
           <Link to={`/${props.media.user.username}`}>{`@${props.media.user.username}`}</Link>
         </div>
@@ -25,7 +25,7 @@ const card = props => (
         <source src={props.media.media_audio} type="audio/ogg" />
       </audio>
     </div>
-    <div className="row">
+    <div className="row date">
       <small>{props.media.created_at}</small>
     </div>
   </div>

@@ -1,10 +1,10 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 
-import "./Header.css"
+import "./Header.scss"
 
 const header = props => {
-  const userLink = props.user ? <Link to={`/${props.user}`}>{props.user}</Link> : null
+  const userLink = props.user ? <Link to={`/${props.user}`} className="user-link">{props.user}</Link> : null
   return (
     <header className="Header">
       <div className="container">
