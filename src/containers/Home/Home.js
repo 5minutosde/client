@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import Header from "../../components/Header/Header"
 import Hero from "../../components/Hero/Hero"
 import Card from "../../components/Card/Card"
+import CardButton from "../../components/CardButton/CardButton"
 
 import Database from '../../Database'
 
@@ -42,6 +43,7 @@ class Home extends Component {
         <Header />
         <Hero title="Bem vindos aos 5 minutos" />
         <div className="container">
+          <CardButton />
           { this.state.medias.map((media, key) =>
             <Card media={media} key={key} />
           )}
