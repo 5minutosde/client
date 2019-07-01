@@ -8,7 +8,7 @@ const card = props => (
     <div className="row">
       <div className="column avatar">
         <Link to={`/${props.media.user.username}`}>
-          <img src={props.media.user.avatar || `https://api.adorable.io/avatars/400/abott@adorable.io.png`} alt="" height="48" />
+          <img src={props.media.user.avatar || props.media.user.username} alt="" height="48" />
         </Link>
       </div>
       <div className="column">
