@@ -3,8 +3,8 @@ import 'firebase/auth'
 import 'firebase/database'
 
 var config = {
-  apiKey: "",
-  databaseURL: "https://fiveminutes-5655c.firebaseio.com/"
+  apiKey: process.env.REACT_APP_DB_API_KEY,
+  databaseURL: process.env.REACT_APP_DB_URL
 }
 
 firebase.initializeApp(config)
