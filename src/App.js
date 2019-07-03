@@ -6,6 +6,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import "./App.css"
 
+document.title = "5 minutos"
+
 function App() {
   return (
     <div>
