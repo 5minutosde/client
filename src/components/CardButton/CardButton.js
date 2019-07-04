@@ -1,11 +1,16 @@
 import React from "react"
-import { Link } from 'react-router-dom'
 
 import './CardButton.scss'
 
 const card = props => (
   <div className="Card CardButton">
-    <a href="https://t.me/Fiveminues_bot" target="_blank">Adicione nosso bot no Telegram @fiveminutes_bot</a>
+    <a
+      href="https://t.me/Fiveminues_bot"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Adicione nosso bot no Telegram @fiveminutes_bot
+    </a>
   </div>
 )
 
