@@ -1,0 +1,25 @@
+.Card {
+  padding: 6px;
+  margin: 12px;
+  border: 1px solid #e0dede;
+  border-bottom: 1px solid #ebebeb;
+
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  audio {
+    width: 100%;
+  }
+
+  .date {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+
+  .card-title {
+    margin: 0px;
+  }
+
+}

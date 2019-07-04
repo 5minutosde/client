@@ -1,0 +1,15 @@
+.hero {
+  border-bottom: 1px solid gray;
+  color: white;
+  padding: 48px 12px;
+  background: rgb(9,121,121);
+  background: linear-gradient(90deg, rgba(9,121,121,1) 0%, rgba(0,255,220,1) 100%);
+
+  .title {
+    margin: 0px;
+  }
+
+  .subtitle {
+    margin: 0px;
+  }
+}
